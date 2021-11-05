@@ -1,0 +1,21 @@
+{
+  "name": "@local/web-components-lit",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Sample project using lit",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "author": "LF",
+  "dependencies": {
+    "lit": "^2.0.0",
+    "@lit-labs/react": "^1.0.1",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5",
+    "@types/react": "*",
+    "@types/react-dom": "*"
+  }
+}
