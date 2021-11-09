@@ -14,9 +14,13 @@ export class LitButton extends LitElement {
         }
     `;
 
+    onClick() {
+        this.dispatchEvent(new Event("buttonClick"))
+    }
+
     override render() {
         return html`
-            <button type="${this.type}"><slot></slot></button>
+            <button @click=${this.onClick} type="${this.type}"><slot></slot></button>
         `;
     }
 }

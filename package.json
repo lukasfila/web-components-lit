@@ -5,7 +5,10 @@
   "description": "Sample project using lit",
   "main": "index.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "cem-analyze": "cem analyze --litelement --globs \"src/**/*.ts\"",
+    "cem-analyze:watch": "cem analyze --litelement --globs \"src/**/*.ts\" --watch"
+  },
   "author": "LF",
   "dependencies": {
     "lit": "^2.0.0",
@@ -16,6 +19,8 @@
   "devDependencies": {
     "typescript": "^4.3.5",
     "@types/react": "*",
-    "@types/react-dom": "*"
-  }
+    "@types/react-dom": "*",
+    "@custom-elements-manifest/analyzer": "^0.5.3"
+  },
+  "customElements": "custom-elements.json"
 }

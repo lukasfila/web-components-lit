@@ -3,7 +3,7 @@ import React from "react";
 import {LitInput} from "../input";
 import {LitForm} from "../form";
 import {LitButton} from "../button";
-import {LitConfig} from "../config";
+import {LitResize} from "../resize";
 
 export const LitInputReact = createComponent(
 	React,
@@ -18,16 +18,20 @@ export const LitInputReact = createComponent(
 export const LitFormReact = createComponent(
 	React,
 	"lit-form",
-	LitForm
+	LitForm, {
+		onFormSubmit: "formSubmit"
+	}
 );
 
 export const LitButtonReact = createComponent(
 	React,
 	"lit-button",
-	LitButton
+	LitButton, {
+		onButtonClick: "buttonClick"
+	}
 );
-export const LitConfigReact = createComponent(
+export const LitResizeReact = createComponent(
 	React,
-	"lit-config",
-	LitConfig
+	"lit-resize",
+	LitResize
 );

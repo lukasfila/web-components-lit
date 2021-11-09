@@ -2,10 +2,9 @@ import {LitElement, html, css} from 'lit-element';
 import {customElement, property} from 'lit/decorators.js';
 
 @customElement("lit-input")
-
 export class LitInput extends LitElement {
     @property()
-    value = "";
+    value: string = "";
 
     @property()
     name = "";
@@ -23,19 +22,20 @@ export class LitInput extends LitElement {
     `;
 
     valueChanged() {
-        console.log("value changed input");
-        this.dispatchEvent(new CustomEvent("valueChanged", {bubbles: true, detail: this.shadowRoot!.querySelector("input")!.value}))
-    }
-
-    override attributeChangedCallback(name: string, _old: string | null, value: string | null) {
-        super.attributeChangedCallback(name, _old, value);
-        console.log(name);
+        this.value = this.shadowRoot!.querySelector("input")!.value;
+        this.dispatchEvent(new Event("valueChanged"));
     }
 
     override render() {
         return html`
-            <label><slot></slot></label>
-            <input @keyup="${this.valueChanged}" name="${this.name}" value="${this.value}" id="${this.id}" style="${this.style}"/>
+            <label for="${this.id}"><slot></slot></label>
+            <input 
+                @keyup="${this.valueChanged}" 
+                name="${this.name}" 
+                value="${this.value}" 
+                id="${this.id}" 
+                style="${this.style}"
+            />
         `;
     }
 }

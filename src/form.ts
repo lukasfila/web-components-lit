@@ -1,9 +1,10 @@
 import {LitElement, html, css} from 'lit-element';
-import {customElement} from "lit/decorators.js";
-
+import {customElement, property} from "lit/decorators.js";
 
 @customElement("lit-form")
 export class LitForm extends LitElement {
+    @property()
+    searchText: string = "";
 
     static override styles = css`
         web-input {
@@ -18,20 +19,20 @@ export class LitForm extends LitElement {
         }
     `;
 
+    change() {
+        const inputElement = this.shadowRoot!.querySelector("lit-input");
+        this.searchText = inputElement.value || "";
+    }
 
-    change(event: CustomEvent) {
-        console.log(event.detail);
+    submit() {
+        this.dispatchEvent(new Event("formSubmit"));
     }
 
     override render() {
         return html`
-            <form action="?submit" method="get">
-                Custom components: <br/>
-                <lit-input name="input_name" @valueChanged="${this.change}">Label</lit-input>
-                <lit-button type="submit" @click="">Submit</lit-button>
-                <lit-button type="reset">Clear</lit-button>
-                <br />
-                
+            <form action="?submit" method="GET">
+                <lit-input name="input_name" @valueChanged="${this.change}" value=${this.searchText}>Label</lit-input>
+                <lit-button type="submit" @click="${this.submit}">Submit</lit-button>
             </form>
         `;
     }
